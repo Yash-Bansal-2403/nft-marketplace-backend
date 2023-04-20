@@ -37,11 +37,7 @@ npx hardhat test
 
 You have to set your environment variables. You can add them to a `.env` file, similar to what you see in `.env.example`.
 
-2. Get testnet ETH
-
-Head over to [faucets.chain.link](https://faucets.chain.link/) and get some tesnet ETH & LINK. You should see the ETH and LINK show up in your metamask.
-
-4. Deploy
+2. Deploy
 
 run:
 
@@ -51,7 +47,7 @@ npx hardhat deploy --network mumbai
 
 And copy / remember the contract address.
 
-7. Enter your NFT Marketplace!
+3. Enter your NFT Marketplace!
 
 You're contract is now setup to be a tamper proof NFT Marketplace.You can mint and list your NFT by running-
 
