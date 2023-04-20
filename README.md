@@ -45,14 +45,14 @@ run:
 npx hardhat deploy --network mumbai
 ```
 
-And copy / remember the contract address.
+And copy / remember the contract address (for TheGraph protocol).
 
 3. Enter your NFT Marketplace!
 
 You're contract is now setup to be a tamper proof NFT Marketplace.You can mint and list your NFT by running-
 
 ```
-npx hardhat run scripts/entermint-and-list-item.js --network mumbai
+npx hardhat run scripts/mint-and-list-item.js --network mumbai
 ```
 
 ## Verify on etherscan
