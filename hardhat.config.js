@@ -1,24 +1,17 @@
-//this file is the heart of hardhat and is used to control it
-//in this file we configure all the hardhat plugins
-
-require("@nomiclabs/hardhat-waffle") //used to work with waffle testing framework
-require("hardhat-gas-reporter") //package which tells how much gas each of our contract function consumes
-require("@nomiclabs/hardhat-etherscan") //to programmatically verify our deployment
-require("dotenv").config() //to use .env encrypted file
-require("solidity-coverage") //package which tells how many lines of our.sol file are covered in test
-require("hardhat-deploy") //to use for deployment and easy testing
-require("hardhat-contract-sizer")
+require("@nomicfoundation/hardhat-toolbox") //isme hardhat etehrscan bhi h..gast reportr bhi h,docs m dekh lo kya kya h isme likh a h udhar
+require("dotenv").config()
+require("hardhat-deploy") //this is hardhat-community plugin and also not comes in toolbox(see it on hardhat docs,what comes with it,many plugins patrick used doesn't come with it and some come with it.)
 
 /** @type import('hardhat/config').HardhatUserConfig */
 
-const GOERLI_RPC_URL = "https://eth-goerli.g.alchemy.com/v2/EPrSTQZfmyHESsuZJeliyX4ekWpm0K2f" //end node for goerli network from infura/alchemy/quicknode
-const SEPOLIA_RPC_URL = "https://eth-sepolia.g.alchemy.com/v2/H_wnO0UUSmZ_fY-ytKm6MOZ8gjoPEjKl"
-//end node for sepolia network from infura/alchemy/quicknode
-const MUMBAI_RPC_URL = "https://polygon-mumbai.g.alchemy.com/v2/Jmnfl8FhYkBZVV3RFQ0y_VLfeVIlHOLr"
-const PRIVATE_KEY = "f30c48d50923d1b75ba6f33134b4ac57663c6091ea88ed7c6733cbeabcf209c6" //private key of our metamask account
-const ETHERSCAN_API_KEY = "K1ITDA9PWNWCYWX43FJ61ET6WN33ADP2Y2" //using ybansal2403   etherscan api to programmatically verify our deployment
-const POLYGONSCAN_API_KEY = "NHJKUEAR6C478GH29WM8GHUMF773PBNFJN" //using ybansal2403  polygonscan api to programmatically verify our deployment
-const COINMARKETCAP_API_KEY = "a6027d7d-91eb-429c-8570-470bf35ffe54" // bobabraham API key on coinmarket cap
+const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL
+const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL
+const MUMBAI_RPC_URL = process.env.MUMBAI_RPC_URL
+const PRIVATE_KEY = process.env.PRIVATE_KEY
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API key"
+const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY || "Your polygonscan API key"
+const REPORT_GAS = process.env.REPORT_GAS || false
+
 module.exports = {
     defaultNetwork: "hardhat",
     networks: {
@@ -82,7 +75,7 @@ module.exports = {
             default: 0, // here this will by default take the first account as deployer
             1: 0, // similarly on mainnet it will take the first account as deployer. Note though that depending on how hardhat network are configured, the account 0 on one network can be different than on another
             //for different chainIds we can specify what will be the default deployer account
-            31337: 2, //on hardhat deployer account will be 2nd account
+            31337: 0, //on hardhat deployer account will be 2nd account
         },
         player: {
             default: 1,
